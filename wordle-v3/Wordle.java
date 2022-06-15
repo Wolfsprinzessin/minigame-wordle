@@ -84,6 +84,8 @@ public class Wordle extends JFrame implements ActionListener {
     }
 
     public static void StartWordle() {
+
+        /*
         //makes an array of the possible words (12947 lines long)
         possibleWords = new String[12947];
         try { //copied from https://replit.com/@skutschke/WordleWords#Main.java
@@ -101,10 +103,11 @@ public class Wordle extends JFrame implements ActionListener {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+        */
 
         startTime = System.currentTimeMillis();
-        tries = 0;
-        System.out.println("Wordle: Type A Five Letter Word");
+        versuche = 0;
+        System.out.println("Wordle: Wort mit 5 Buchstaben eingeben");
         answerChoosen = ReturnRandomWord();
         answer = new char[5];
         for (int i = 0; i < 5; i++ ) answer[i] = answerChoosen.charAt(i);
@@ -113,8 +116,8 @@ public class Wordle extends JFrame implements ActionListener {
     }
     
     public static void EndWordle() {
-        System.out.println("Wordle: The Answer Was: " + new String(answerChoosen));
-        System.out.println("Wordle: You Found The Answer in " + ((System.currentTimeMillis() - startTime) / 1000) + " seconds and " + tries + " tries.");
+        System.out.println("Wordle: Die Antwort war: " + new String(answerChoosen));
+        System.out.println("Wordle: Gelöst in " + ((System.currentTimeMillis() - startTime) / 1000) + " Sekunden und " + versuche + " Versuchen.");
 
         userText1.setEnabled(false);
         userText1.setVisible(false);
@@ -131,7 +134,7 @@ public class Wordle extends JFrame implements ActionListener {
 
     public static void EnterWord(){ //if its good, actually submit the word for checking
         if ( IsAValidWord(userText1.getText(), possibleWords) ) ButtonPressed();
-        else System.out.println("Wordle: That is not a valid word");
+        else System.out.println("Wordle: Kein gültiges Wort");
     }
 
     public static void ButtonPressed(){
@@ -167,7 +170,7 @@ public class Wordle extends JFrame implements ActionListener {
 
     public static int[] PlayWordle(String InputWordleWord) {
         done = false;
-        tries++;
+        versuche++;
 
         String R1 = InputWordleWord.toLowerCase();//String R1 = s.nextLine().toLowerCase();
 
