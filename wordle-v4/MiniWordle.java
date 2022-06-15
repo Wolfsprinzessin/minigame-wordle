@@ -61,7 +61,7 @@ public class MiniWordle extends JFrame implements ActionListener {
 
         JButton btnNeu = new JButton("Neu");
         btnNeu.setBounds(200, 20, 80, 25);
-        btnNeu.addActionListener();
+//      btnNeu.addActionListener();
         panel.add(btnNeu);
 
 
