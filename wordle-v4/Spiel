@@ -1,0 +1,8 @@
+public class NeuesSpiel {
+
+
+    //Konstruktor
+    NeuesSpiel() {
+
+    }
+}

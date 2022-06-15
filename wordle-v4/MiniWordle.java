@@ -1,18 +1,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.util.Scanner;
 
-public class MiniWordle extends JFrame implements ActionListener {
-
-    private static JLabel stats;
-    private static JTextField eingabewort;
-    private static JLabel[] labels;
+public class MiniWordle implements ActionListener {
 
     public static Scanner s = new Scanner(System.in);
     public static final String ANSI_RESET = "\u001B[0m";
@@ -31,48 +24,7 @@ public class MiniWordle extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 
-        JPanel panel = new JPanel();
-        JFrame frame = new JFrame();
-        frame.setSize(300, 350);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Mini Wordle");
-        frame.setLocationRelativeTo(null);
-        frame.add(panel);
-
-        panel.setLayout(null);
-        JLabel title = new JLabel("Wordle: ");
-        title.setBounds(10, 20, 80, 25);
-        panel.add(title);
-
-        panel.setLayout(null);
-        stats = new JLabel("Wort mit 5 Buchstaben eingeben:");
-        stats.setBounds(10, 50, 250, 25);
-        panel.add(stats);
-
-        eingabewort = new JTextField();
-        eingabewort.addActionListener(new MiniWordle());
-        eingabewort.setBounds(40, 80 + (0 * 25), 80, 25);
-        panel.add(eingabewort);
-
-        JButton btnEnter = new JButton("Enter");
-        btnEnter.setBounds(100, 20, 80, 25);
-        btnEnter.addActionListener(new MiniWordle());
-        panel.add(btnEnter);
-
-        JButton btnNeu = new JButton("Neu");
-        btnNeu.setBounds(200, 20, 80, 25);
-//      btnNeu.addActionListener();
-        panel.add(btnNeu);
-
-
-        labels = new JLabel[6];
-        for (int i = 0; i < 6; i++) {
-            labels[i] = new JLabel("<html><font size='5' color=blue> ----- </font> <font");
-            labels[i].setBounds(44, 80 + (i * 25), 80, 25);
-            panel.add(labels[i]);
-        }
-
-        frame.setVisible(true);
+        SpielOberflaeche spiel = new SpielOberflaeche();
 
         startWordle(); //gets the answer word, and does some other thing like starting the timer
     }
