@@ -1,8 +1,12 @@
+package src;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class SpielOberflaeche extends JFrame implements ActionListener {
+public class SpielOberflaeche extends JFrame implements KeyListener,ActionListener  {
 
     static JPanel panel = new JPanel();
     static JFrame spiel = new JFrame();
@@ -23,25 +27,21 @@ public class SpielOberflaeche extends JFrame implements ActionListener {
         spiel.setLocationRelativeTo(null);
         spiel.setVisible(true);
         spiel.add(panel);
+        panel.setLayout(null);
+        title.setBounds(10, 20, 80, 25);
+        panel.add(title);
 
         //Btn für Neues Spiel
         btnNeu.setBounds(200, 20, 80, 25);
-        btnNeu.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Spiel spiel = new Spiel();
-            }
-        });
+        btnNeu.addActionListener(new SpielOberflaeche());
         panel.add(btnNeu);
 
         // Das Wort, das eingegeben wird
-        eingabewort.addActionListener(new MiniWordle());
         eingabewort.setBounds(40, 80 + (0 * 25), 80, 25);
+        eingabewort.addKeyListener(new SpielOberflaeche());
         panel.add(eingabewort);
 
-        title.setBounds(10, 20, 80, 25);
-        panel.add(title);
-    
-        panel.setLayout(null);
+   
         labels = new JLabel[6];
         stats = new JLabel("Wort mit 5 Buchstaben eingeben:");
         stats.setBounds(10, 50, 250, 25);
@@ -52,6 +52,27 @@ public class SpielOberflaeche extends JFrame implements ActionListener {
             labels[i].setBounds(44, 80 + (i * 25), 80, 25);
             panel.add(labels[i]);
         }
+    }
+
+    @Override
+	public void keyTyped(KeyEvent e){}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+            Spiel wort = new Spiel();
+            wort.enterWord();
+        }
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {}
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Spiel neuesSpiel = new Spiel();
+        neuesSpiel.neustartSpiel();
     }
     
 }
