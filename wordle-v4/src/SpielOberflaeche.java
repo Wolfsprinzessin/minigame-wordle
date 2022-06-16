@@ -24,14 +24,13 @@ public class SpielOberflaeche extends JFrame implements ActionListener {
         spiel.setVisible(true);
         spiel.add(panel);
 
-        //Btn für Enter
-        btnEnter.setBounds(100, 20, 80, 25);
-        btnEnter.addActionListener(new MiniWordle());
-        panel.add(btnEnter);
-
         //Btn für Neues Spiel
         btnNeu.setBounds(200, 20, 80, 25);
-        btnNeu.addActionListener(new Spiel);
+        btnNeu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Spiel spiel = new Spiel();
+            }
+        });
         panel.add(btnNeu);
 
         // Das Wort, das eingegeben wird
