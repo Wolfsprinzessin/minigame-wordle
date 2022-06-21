@@ -21,10 +21,9 @@ public class Wordle extends JFrame implements ActionListener {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
-    static int tries;
-    static char[] input;
-    static long startTime;
-    static char[] answer;
+    static int tries; //Anzahl der Versuche
+    static char[] input; //Eingabewort -> als Buchstabenarray
+    static char[] answer; //zufälliges Wort -> als Buchstabenarray
     static boolean done;
     static String answerChoosen;
 
@@ -79,9 +78,6 @@ public class Wordle extends JFrame implements ActionListener {
     }
 
     public static void startWordle() {
-        //makes an array of the possible words
-    
-        startTime = System.currentTimeMillis();
         tries = 0;
         System.out.println("Wordle: Bitte Wort mit 5 Buchstaben eingeben.");
         answerChoosen = ReturnRandomWord();
