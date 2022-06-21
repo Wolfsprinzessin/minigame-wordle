@@ -1,3 +1,6 @@
+//Codevorlage:
+//https://www.youtube.com/watch?v=glVtSURgZeo&lc=UgyyFYRktublDoD1m-Z4AaABAg.9bgimB9-1Ah9bh31oooAQY
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -92,7 +95,6 @@ public class Wordle extends JFrame implements ActionListener {
 
     public static boolean IsAValidWord(String input, String[] possibleWords) {
         if (input.length() < 5) {
-            System.out.println("zu kurz");
             stats.setText("<html><font size='5'>Das Wort ist zu kurz.</font><font");
             return false;
         }
@@ -100,7 +102,6 @@ public class Wordle extends JFrame implements ActionListener {
             if (string.equals(input)) {
                 return true;
             } else {
-                System.out.println("nicht dabei");
                 stats.setText("<html><font size='5'" + "Das Wort ist nicht in der Liste." + "</font> <font");
             }
         }
@@ -114,7 +115,6 @@ public class Wordle extends JFrame implements ActionListener {
         //das eingegeben Wort wird zum char[]-Array
         for (int i = 0; i < 5; i++ ) {input[i] = userInputLower.charAt(i);}
         colorOfLetters = ReturnColorOfLetters(input,answer);//den Buchstaben werden Farben zugeordnet
-        System.out.println("Alle Buchstaben geprüft und gefärbt");
         
         for (int i : colorOfLetters) { 
             if (i != 2) {
@@ -174,15 +174,14 @@ public class Wordle extends JFrame implements ActionListener {
 
 
     public static void EndWordle() {
-        System.out.println("Start EndWordle");
-        System.out.println(done);
         inputField.setEnabled(false);
         inputField.setVisible(false);
 
         if (!done) {
-            System.out.println("if done = false");
             stats.setText("<html><font size='5' color=red> Verloren! Die Antwort war: " + answerWord.toUpperCase() + "</font> <font");
         }
-        else  stats.setText("<html><font size='5' color=green> " + "Gelöst in " + tries + " Versuchen. Das Wort war " + answerWord.toUpperCase() + "</font> <font");
+        else {
+            stats.setText("<html><font size='5' color=green> Gelöst in " + tries + " Versuchen. Das Wort war " + answerWord.toUpperCase() + "</font> <font");
+        }
     }
 }
